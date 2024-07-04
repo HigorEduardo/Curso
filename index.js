@@ -1,12 +1,9 @@
+const express = require('express')
 
-function pares(arr){
-    nova_arr = []
-    for(let i = 0; i < arr.length; i++){
-        if(arr[i] %2 === 0 ){
-            nova_arr.push(arr[i])
-        }
-    } 
-    return nova_arr
-}
+const app = express()
 
+app.get('/', function(req, res,){
+    res.send('NOSSA API TA FUNCIONANDO')
+})
 
+app.listen(8000)
