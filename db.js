@@ -18,4 +18,14 @@ const connectDB = async () =>{
     });
 };
 
-module.exports = connectDB
+
+const setup = async(req, res) => {
+    try {
+        const data = await client.query('CREATE TABLE usuarios (id SERIAL PRIMARY KEY, nome VARCHAR(100), email VARCHAR(100), senha VARCHAR(100))')
+        res.status(200).json({msg:'A TABELA CRIADA'})
+    } catch (err){
+        console.log('erro ao criar a tabela')
+        res.status(500)
+    }
+}
+module.exports = {connectDB, setup, client}
